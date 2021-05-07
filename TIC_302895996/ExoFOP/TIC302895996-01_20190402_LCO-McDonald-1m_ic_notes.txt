@@ -1,0 +1,13 @@
+Hi Karen,
+
+I analyzed LCO 1-m Ic data for TIC 302895996 from 2019-04-02 and found no transit, despite the anticipated transit depth being a detectable level for this RMS. Our aperture size was 12 pixels in radius, while the the FWHM of the target was 6.66 pixels, or 2.59". I’ve included the data table, light curve image, and field images, and I will upload all of this to ExoFOP shortly. I’m going to keep looking at the data to see if there’s something else going on, but given the ultra-short period of this planet (~0.5 days), it may be possible that I missed the transit entirely.
+
+In the field image, I checked all target stars (T2-T18) for evidence of being EBs and found no dips that could have corresponded to a transit detection at this epoch.
+
+Let me know if there’s anything else I can provide!
+
+Will
+
+
+
+Follow  up [edit] - upon closer inspection it was found that there is an NEB 29" to the SW, T6 in the data.

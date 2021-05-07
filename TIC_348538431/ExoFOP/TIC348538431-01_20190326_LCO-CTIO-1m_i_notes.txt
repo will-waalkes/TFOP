@@ -1,0 +1,15 @@
+Hi Karen,
+
+I analyzed LCO CTIO 1-m Ic band data on TIC 348538431 taken 03/26/2019.
+
+I ran an MCMC fit with t0 and Rp/R* free parameters and got the following:
+Rp/R* = 0.2676 +/- 0.0008
+t0 = 2458568.551559 +/- 0.000113  [BJD]
+
+The aperture radius was 11 pixels, or 4.28". The FWHM was 2.11"
+
+
+Let me know if there’s anything else I can provide!
+
+Cheers,
+Will

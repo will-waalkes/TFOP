@@ -1,0 +1,18 @@
+#AstroImageJ Saved Apertures
+#Thu Mar 21 09:03:56 MDT 2019
+.multiaperture.isrefstar=false,false,true,true,true,true,true
+.aperture.rback2=30.0
+.multiaperture.yapertures=1528.5153,1566.4973,1776.7649,2022.1605,1987.2625,2140.7283,1530.0736
+.aperture.rback1=20.0
+.multiaperture.naperturesmax=1000
+.multiaperture.apfwhmfactor=1.4
+.multiaperture.usevarsizeap=false
+.aperture.radius=11.0
+.multiaperture.raapertures=
+.multiaperture.centroidstar=true,true,true,true,true,true,true
+.aperture.removebackstars=true
+.aperture.backplane=false
+.multiaperture.xapertures=1673.4689,1506.2462,2075.8992,1871.299,1662.6594,994.0074,1158.2404
+.multiaperture.isalignstar=true,true,true,true,true,true,true
+.multiaperture.absmagapertures=99.999,99.999,99.999,99.999,99.999,99.999,99.999
+.multiaperture.decapertures=

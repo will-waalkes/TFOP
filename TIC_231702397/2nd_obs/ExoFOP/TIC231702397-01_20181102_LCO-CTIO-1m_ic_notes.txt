@@ -1,0 +1,15 @@
+Hi Karen,
+
+I analyzed LCO CTIO 1-m Ic band data on TIC 231702397 taken 11/03/2018.
+
+I ran an MCMC fit with t0 and Rp/R* free parameters and got the following:
+Rp/R* = 0.0537 +/- 0.0017
+t0 = 2458425.60336098 + 0.00175721 - 0.00182727  [JD]
+
+This fitted mid-transit time is 4-sigma away from the anticipated mid-transit time based on the alert ephemeris.
+
+
+Let me know if there’s anything else I can provide!
+
+Cheers,
+Will
