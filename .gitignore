@@ -1,6 +1,4 @@
 
 *.fits
 *samples.txt
-*.dat
-*.txt
 *.DS_Store*
