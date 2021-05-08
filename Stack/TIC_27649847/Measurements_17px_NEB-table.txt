@@ -1,0 +1,39 @@
+                       TFOP NEB Search Table for:
+
+           Measurements_17px.xls
+
+                 Created by AIJ macro Revision 2.18
+                          on 2020-11-24
+          ------------------------------------------------
+                    Pixel Scale (arc-seconds/pixel): 0.39
+                    Predicted ingress time: 0.9
+                    Predicted egress time:  0.93
+                    Target predicted depth: 2.3
+                    Target Star: T1
+                    Search Radius: 2.5
+                    Duration of Observation (min.): 154.3
+                    Number of Images: 113
+                    Average Exposure Plus Delay Time (sec.): 81.9
+                    Cadence Requested When Calculating RMS (sec.): 30.0
+                    Binning Used When Calculating RMS: 1
+                    Average Aperture Radius: 17.0 (pixels); 6.6 (arc-seconds)
+                    Dmag correction factor to account for difference with TESS band:-0.5
+
+      Separation             Uncorr.
+Star  from target  PA (deg.)  dmag   RMS(ppt)  NEBdepth(ppt)  NEBdepth/RMS    Disposition
+ T2      1'32"       NA      3.717     31.43           44.5       1.4      ***Not Cleared***
+ T3      2'07"       NA      2.452     11.19           13.9       1.2      ***Not Cleared***
+ T4      1'44"       NA      2.329      8.92           12.4       1.4      ***Not Cleared***
+ T5      2'12"       NA      1.493      4.82            5.7       1.2      ***Not Cleared***
+ T6      1'24"       NA      3.799     31.74           48.0       1.5      ***Not Cleared***
+
+Possible dispositions of the star being the source of the target predicted depth:
+   Likely cleared (NEBdepth/RMS is between 3 and 5)
+   Cleared (NEBdepth/RMS is >= 5)
+   Cleared-too faint (NEBdepth >= 1000ppt)
+   ***Not Cleared-flux too low*** (weighted average of Source-Sky counts per aperture pixel < 2)
+   ***Not Cleared*** (none of the above conditions are met)
+
+Image shift statistics:
+             stdev.(arc-seconds): 0.1633 in X and 0.107 in Y
+             max. deviation (pixels): 1.7872 in X and 1.4991 in Y

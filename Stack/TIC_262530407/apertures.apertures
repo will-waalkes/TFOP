@@ -1,0 +1,18 @@
+#AstroImageJ Saved Apertures
+#Sat Nov 21 16:17:50 MST 2020
+.multiaperture.isrefstar=false,false,false,false,false,true,true
+.aperture.rback2=80.0
+.multiaperture.yapertures=2035.8358,1904.5791,2088.9163,1916.6957,1742.1118,1928.328,2223.6038
+.aperture.rback1=53.0
+.multiaperture.naperturesmax=1000
+.multiaperture.apfwhmfactor=1.35
+.multiaperture.usevarsizeap=false
+.aperture.radius=28.0
+.multiaperture.raapertures=20.43825981,20.50580859,20.44572999,20.48308274,20.49125483,20.31157941,20.62466513
+.multiaperture.centroidstar=true,true,true,true,true,true,true
+.aperture.removebackstars=true
+.aperture.backplane=false
+.multiaperture.xapertures=2024.7283,2452.1404,2072.4822,2308.1274,2358.618,1220.682,3208.7905
+.multiaperture.isalignstar=true,true,true,true,true,true,true
+.multiaperture.absmagapertures=99.999,99.999,99.999,99.999,99.999,99.999,99.999
+.multiaperture.decapertures=-46.71489844,-46.72874655,-46.70912438,-46.72755597,-46.74638699,-46.72705354,-46.6935608

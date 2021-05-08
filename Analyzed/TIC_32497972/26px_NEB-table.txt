@@ -1,0 +1,38 @@
+                       TFOP NEB Search Table for:
+
+           26px.xls
+
+                 Created by AIJ macro Revision 2.18
+                          on 2020-11-30
+          ------------------------------------------------
+                    Pixel Scale (arc-seconds/pixel): 0.39
+                    Predicted ingress time: 0.47
+                    Predicted egress time:  0.54
+                    Target predicted depth: 2.6
+                    Target Star: T1
+                    Search Radius: 2.5
+                    Duration of Observation (min.): 391.8
+                    Number of Images: 330
+                    Average Exposure Plus Delay Time (sec.): 71.2
+                    Cadence Requested When Calculating RMS (sec.): 30.0
+                    Binning Used When Calculating RMS: 1
+                    Average Aperture Radius: 26.0 (pixels); 10.1 (arc-seconds)
+                    Dmag correction factor to account for difference with TESS band:-0.5
+
+      Separation             Uncorr.
+Star  from target  PA (deg.)  dmag   RMS(ppt)  NEBdepth(ppt)  NEBdepth/RMS    Disposition
+ T2      1'23"       NA      3.771     38.43           52.9       1.4      ***Not Cleared***
+ T3      2'15"       NA      2.602     14.52           18.0       1.2      ***Not Cleared***
+ T5      1'26"       NA      3.395     37.11           37.4       1.0      ***Not Cleared***
+ T6      2'29"       NA      2.213     14.13           12.6       0.9      ***Not Cleared***
+
+Possible dispositions of the star being the source of the target predicted depth:
+   Likely cleared (NEBdepth/RMS is between 3 and 5)
+   Cleared (NEBdepth/RMS is >= 5)
+   Cleared-too faint (NEBdepth >= 1000ppt)
+   ***Not Cleared-flux too low*** (weighted average of Source-Sky counts per aperture pixel < 2)
+   ***Not Cleared*** (none of the above conditions are met)
+
+Image shift statistics:
+             stdev.(arc-seconds): 0.4647 in X and 0.08871 in Y
+             max. deviation (pixels): 4.634 in X and 1.7951 in Y
