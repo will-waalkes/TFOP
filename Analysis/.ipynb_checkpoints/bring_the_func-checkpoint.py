@@ -91,7 +91,7 @@ def lnprior(lc,
         
     i_min = np.arccos(1/a)*180/np.pi
 
-    if (0.0<=rp<= 1.0)and(expected_t0-0.1<=t_0<=expected_t0+0.2)and(2<=a<=planet_a+10)and(70.0<=i<= 90.0):
+    if (0.0<=rp<= 1.0)and(expected_t0-0.07<=t_0<=expected_t0+0.07)and(2<=a<=planet_a+10)and(70.0<=i<= 90.0):
         
 #         rp_mean = 0.0533
 #         rp_sigma = 0.004
