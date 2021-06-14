@@ -91,20 +91,20 @@ def lnprior(lc,
         
     i_min = np.arccos(1/a)*180/np.pi
 
-    if (0.0<=rp<= 0.2)and(expected_t0-0.05<=t_0<=expected_t0+0.08)and(2<=a<=200)and(80.0<=i<= 90.0):
+    if (0.0<=rp<= 0.1)and(np.min(lc.time)<=t_0<=np.max(lc.time))and(48<=a<=68)and(i_min<=i<= 90.0):
         
-#         rp_mean = 0.0533
-#         rp_sigma = 0.004
-#         a_mean = 23.93
-#         a_sigma = 2.04
+        rp_mean = 0.04
+        rp_sigma = 0.015
+        a_mean = 57.
+        a_sigma = 3.
 #         i_mean = 89.29
 #         i_sigma = 0.51
         
-#         lnprior_rp = - (1.0/2.0)*((rp-rp_mean)/rp_sigma)**2.0
-#         lnprior_a = - (1.0/2.0)*((a-a_mean)/a_sigma)**2.0
+        lnprior_rp = - (1.0/2.0)*((rp-rp_mean)/rp_sigma)**2.0
+        lnprior_a = - (1.0/2.0)*((a-a_mean)/a_sigma)**2.0
 #         lnprior_i = - (1.0/2.0)*((i-i_mean)/i_sigma)**2.0
         
-        return 0.0 #lnprior_rp + lnprior_a + lnprior_i
+        return lnprior_a + lnprior_rp
     
     return -np.inf
 
@@ -163,7 +163,7 @@ def lnprob(theta,
     
     if plot:
         
-        hires_times = np.linspace(lc.time[0],lc.time[-1],1000)
+        hires_times = np.linspace(np.min(lc.time),np.max(lc.time),1000)
         model_to_plot = BATMAN(planet_period, rp, t_0, i, a, LD, t = hires_times)
         
         plt.figure()
