@@ -196,7 +196,7 @@ def light_curve(lc,
     ########################
     
     planet_radius, planet_period, planet_a, planet_i, expected_t0, LD, offset, observatory, airmass, toi = static_params
-    hires_times = np.linspace(lc.time[0]-1,lc.time[-1]+1,1000) #This array is for the model that gets plotted
+    hires_times = np.linspace(np.min(lc.time),np.max(lc.time),1000) #This array is for the model that gets plotted
     C1_best, C2_best, rp_best, t_0_best = parameters
     ndim = np.shape(sampler.chain.T[:,0,0])[0]
     burnin = int(0.25*nsteps)
