@@ -59,7 +59,7 @@ def lnprior(lc,
     
     C1, C2, rp, t_0 = theta
         
-    if (0.0<=rp<= 0.1)and(np.min(lc.time)<=t_0<=np.max(lc.time)):
+    if (0.0<=rp<= 0.1)and(np.min(lc.time)-0.015<=t_0<=np.max(lc.time)):
         
         rp_mean = 0.0375
         rp_sigma = 0.0246
