@@ -253,8 +253,7 @@ def plot_chain(sampler,
     
 def corner(samples,
            labels,
-           toi = 'no_toi_given',
-          range = ):
+           toi = 'no_toi_given'):
         
     Samples = samples.T
     
