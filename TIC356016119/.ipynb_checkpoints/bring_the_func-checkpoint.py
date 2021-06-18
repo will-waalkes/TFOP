@@ -57,7 +57,7 @@ def lnprior(lc,
             theta,
             expected_t0):
     
-    C1, C2, rp, t_0 = theta
+    C1, C2, C3, C4, C5, C6, rp, t_0 = theta
         
     if (0.0<=rp<= 0.1)and(np.min(lc.time)-0.015<=t_0<=np.max(lc.time)):
         
@@ -83,15 +83,23 @@ def lnprob(theta,
            planet_period,
            LD,
            airmass,
+           xpos,
+           ypos,
+           comp_flux,
+           sky_flux,
            planet_a,
            expected_t0,
            plot = False):
         
     # Pull out some model parameters
-    C1, C2, rp, t_0 = theta
+    C1, C2, C3, C4, C5, C6, rp, t_0 = theta
         
     # First we want a model to perform the lnprob calculation with.
-    model = (C1 + C2*(airmass-1))*BATMAN(rp, t_0, LD, t = lc.time)
+    
+    systematics_model = C1 + C2*airmass + C3*xpos \
+            + C4*ypos + C5*comp_flux + C6*sky_flux
+    
+    model = systematics_model * BATMAN(rp, t_0, LD, t = lc.time)
     
     if plot:
         
@@ -99,7 +107,7 @@ def lnprob(theta,
         model_to_plot = BATMAN(rp, t_0, LD, t = hires_times)
         
         plt.figure()
-        plt.errorbar(lc.time,lc.flux/(C1 + C2*(airmass-1)),yerr=lc.flux_err/(C1 + C2*(airmass-1)),
+        plt.errorbar(lc.time,lc.flux/(systematics_model),yerr=lc.flux_err/(systematics_model),
                     fmt='o',alpha=0.5,color='royalblue',markersize='5')
         plt.plot(hires_times,model_to_plot,label='Best-Fit Model',color='k',zorder=100)
         plt.ylabel('Normalized Flux',fontsize=18)
@@ -120,15 +128,16 @@ def plot_chain(sampler,
                start=0,
                stop=0):
     
-    planet_radius, planet_period, planet_a, planet_i, expected_t0, LD, offset, observatory, airmass, toi = static_params
+    planet_radius, planet_period, planet_a, planet_i, expected_t0, LD, offset, observatory, airmass, \
+    xpos, ypos, comp_flux, sky_flux, toi = static_params
 
-    C1_all, C2_all, Rp_all, t0_all = sampler.chain.T
+    C1_all, C2_all,C3_all, C4_all,C5_all, C6_all, Rp_all, t0_all = sampler.chain.T
     
     ndim = np.shape(sampler.chain.T[:,0,0])[0]
     
-    C1, C2, Rp, t0 = sampler.chain[:, start:, :].reshape((-1, ndim)).T
+    C1, C2, C3, C4, C5, C6, Rp, t0 = sampler.chain[:, start:, :].reshape((-1, ndim)).T
     
-    C1_burn, C2_burn, Rp_burn, t0_burn = sampler.chain[:, :start, :].reshape((-1, ndim)).T
+    C1_burn, C2_burn, C3_burn, C4_burn, C5_burn, C6_burn, Rp_burn, t0_burn = sampler.chain[:, :start, :].reshape((-1, ndim)).T
     
     plt.figure(figsize=(14,14))
     gs = plt.matplotlib.gridspec.GridSpec(2,2)
@@ -195,20 +204,25 @@ def light_curve(lc,
     # Read in the parameters
     ########################
     
-    planet_radius, planet_period, planet_a, planet_i, expected_t0, LD, offset, observatory, airmass, toi = static_params
+    planet_radius, planet_period, planet_a, planet_i, expected_t0, LD, offset, observatory, airmass, \
+    xpos,ypos,comp_flux,sky_flux,toi = static_params
     hires_times = np.linspace(np.min(lc.time),np.max(lc.time),1000) #This array is for the model that gets plotted
-    C1_best, C2_best, rp_best, t_0_best = parameters
+    C1_best, C2_best, C3_best, C4_best, C5_best, C6_best, rp_best, t_0_best = parameters
     ndim = np.shape(sampler.chain.T[:,0,0])[0]
     burnin = int(0.25*nsteps)
-    C1, C2, Rp, t0 = sampler.chain[:, burnin:, :].reshape((-1, ndim)).T
+    C1, C2, C3, C4, C5, C6, Rp, t0 = sampler.chain[:, burnin:, :].reshape((-1, ndim)).T
     
     ########################################################################
     # Calculate the model with the best-fit MCMC params, calculate residuals
     ########################################################################
     
+    systematics_best = C1_best + C2_best*airmass + C3_best*xpos \
+            + C4_best*ypos + C5_best*comp_flux + C6_best*sky_flux
     model_to_plot = BATMAN(rp_best, t_0_best, LD, t = hires_times)
-    best_model = (C1_best + C2_best*(airmass-1))*BATMAN(rp_best, t_0_best,LD, t = lc.time)
+    best_model = (systematics_best)*BATMAN(rp_best, t_0_best,LD, t = lc.time)
     residual = (lc.flux-best_model)/lc.flux_err
+    
+    TESS_model = BATMAN(0.04, expected_t0, LD, t = hires_times)
     
     #########################
     # Plot the best-fit model
@@ -218,11 +232,12 @@ def light_curve(lc,
                                figsize=(14,7),sharex=True)
     
     a0.set_title(f'Modeled LCO Light Curve for TOI {toi}',fontsize=20)
-    a0.errorbar(lc.time,lc.flux/(C1_best + C2_best*(airmass-1)),
-                yerr=lc.flux_err/(C1_best + C2_best*(airmass-1)),
+    a0.errorbar(lc.time,lc.flux/systematics_best,
+                yerr=lc.flux_err/systematics_best,
                 fmt='o',alpha=0.5,color='royalblue',markersize='5',
                 label=observatory+' data')
     a0.plot(hires_times,model_to_plot,label='Best-Fit Model',color='k',zorder=100)
+    a0.plot(hires_times, TESS_model,label='Model with TFOP parameters',c='red',zorder=90,linewidth=2.0)
     a0.set_ylabel('Normalized Flux',fontsize=18)
     a0.minorticks_on()
     a0.legend(loc='lower right')
@@ -236,7 +251,7 @@ def light_curve(lc,
     for j in range(0,200,1):
         i = np.random.randint(low=0,high=(nsteps-burnin)*100)
         sigma_model = BATMAN(Rp = Rp[i], t0 = t0[i],LD = LD, t = hires_times)
-        a0.plot(hires_times,sigma_model,color='red',alpha = 0.1,
+        a0.plot(hires_times,sigma_model,color='green',alpha = 0.1,
                 linewidth=0.8,zorder=-1000,label='Random Samples')
         
     ####################
@@ -258,10 +273,13 @@ def rms_plot(lc,
              parameters,
              static_params):
     
-    C1_best, C2_best, rp_best, t_0_best = parameters
-    planet_radius, planet_period, planet_a, planet_i, expected_t0, LD, offset, observatory, airmass, toi = static_params
+    C1_best, C2_best, C3_best, C4_best, C5_best, C6_best, rp_best, t_0_best = parameters
+    planet_radius, planet_period, planet_a, planet_i, expected_t0, LD, offset, observatory, sky_flux, airmass, toi = static_params
+    
+    systematics = C1_best + C2_best*airmass + C3_best*xpos \
+            + C4_best*ypos + C5_best*comp_flux + C6_best*sky_flux
         
-    lc_fixed = lc/(C1_best + C2_best*(airmass-1))
+    lc_fixed = lc/systematics
     
     best_model = BATMAN(rp_best, t_0_best, LD, t = lc_fixed.time)
     

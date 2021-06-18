@@ -1,0 +1,44 @@
+﻿Hi Karen,
+
+
+On 2021-06-02 we observed a potential transit of TOI 2094.01 with the APO 3.5m ARCTIC instrument in ip. We captured the expected in-transit window and a long post-transit baseline. 
+
+
+Objectives:
+To capture the transit of this planet candidate in a red bandpass and confirm its depth and mid-transit time.
+
+
+Comments:
+We are not positive that we detect a transit, but when we cut out data obscured by clouds (mostly in the 2nd half of the observation) and model several systematics (x- and y-centroid positions, airmass, absolute flux of comparison stars), there is a possible signal arriving 4-sigma late from the anticipated mid-transit time. The depth appears consistent with the TESS release data for this TOI, but is difficult to constrain from this data set alone.
+
+
+Details: 
+Observation date (UT): 2021-06-02
+TIC and TOI #s: TIC 356016119.01 (TOI 2094.01)
+Telescope and Instrument: APO 3.5m ARCTIC
+Filter: ip
+Exposure time: 30s
+FWHM of target in arcseconds: 7.84”
+Transit time offset: 20 minutes late (4-sigma)
+
+
+Best-fit parameters:
+Depth (ppt) = 1.89 +/- 0.2
+Rp/R* = 0.0477 +/-0.005
+Rp (Re) = 2.0 +/- 0.2
+Modeled Mid-Transit Time = 2459367.873577 + 0.001479 - 0.001846 (BJD)
+Expected Mid-Transit Time = 2459367.818618 +/- 0.0139 (BJD)
+Duration = 1.26 hr
+a/R* (based on system parameters, consistent w/ modeling) = 57 +/- 3
+
+
+
+
+Has anyone expressed interest in this system yet? This APO light curve is insufficient to confirm this planet, but it is interesting and suggestive of a late transit. I’m interested in pursuing this system more with both community input and further attempts to capture a transit from the ground.
+
+
+Either way, I have uploaded this all to ExoFOP and I am looking forward to seeing what comes of this system!
+
+
+Best,
+Will
