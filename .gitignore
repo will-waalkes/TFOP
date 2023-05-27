@@ -3,3 +3,4 @@
 *samples.txt
 *.DS_Store*
 Transit_Analysis/maxsector.py
+Analyzed/*
