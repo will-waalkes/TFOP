@@ -4,3 +4,7 @@
 *.DS_Store*
 Transit_Analysis/maxsector.py
 Analyzed/*
+transit-analysis/.ipynb_checkpoints*
+transit-analysis/__pycache__*
+transit-analysis/data*
+transit-analysis/figs*
